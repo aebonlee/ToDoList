@@ -8,7 +8,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001', 
+    'https://aebonlee.github.io',
+    'https://todolist-dhlt.onrender.com',
+    'https://todolist-dhlt-gc0d.onrender.com'
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // In-memory storage (for demo purposes)

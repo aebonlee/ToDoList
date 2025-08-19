@@ -19,7 +19,8 @@
     "react-dom": "^19.1.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "serve": "^14.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +29,8 @@
     "eject": "react-scripts eject",
     "serve": "serve -s build",
     "build:prod": "REACT_APP_API_URL=https://todolist-dhlt-gc0d.onrender.com npm run build",
-    "build:render": "npm ci && npm run build",
+    "build:render": "npm run build && npm install -g serve",
+    "start:render": "serve -s build -l 3000",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

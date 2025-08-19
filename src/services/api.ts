@@ -11,7 +11,7 @@ import {
 
 class ApiService {
   private api: AxiosInstance;
-  private baseURL = process.env.REACT_APP_API_URL || 'https://todolist-dhlt-gc0d.onrender.com';
+  private baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   constructor() {
     this.api = axios.create({

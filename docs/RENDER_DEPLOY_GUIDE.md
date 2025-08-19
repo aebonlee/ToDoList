@@ -1,7 +1,18 @@
 # 📚 Render.com 배포 가이드
 
 ## 🎯 배포 URL
-https://todolist-dhlt.onrender.com
+- **프론트엔드**: https://todolist-dhlt.onrender.com
+- **백엔드**: https://todolist-dhlt-gc0d.onrender.com (예정)
+
+## ⚠️ 중요 수정사항
+
+### Status 127 오류 해결
+React 앱의 Render 배포 시 발생하는 Status 127 오류는 다음과 같이 해결됩니다:
+
+1. **Build Command 수정**: `npm ci && npm run build`
+2. **환경 변수 설정**: `REACT_APP_API_URL` 올바른 백엔드 URL
+3. **Static Site 설정**: `render.yaml` 파일 사용
+4. **SPA 라우팅**: `_redirects` 파일로 클라이언트 라우팅 지원
 
 ## 🚀 빠른 시작 (Quick Deploy)
 
