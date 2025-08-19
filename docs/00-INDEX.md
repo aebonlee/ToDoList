@@ -7,6 +7,7 @@
 ## 🔧 개발 과정
 - [02-DEVELOPMENT_LOG.md](./02-DEVELOPMENT_LOG.md) - 개발 타임라인 및 주요 결정사항
 - [03-TECHNICAL_ARCHITECTURE.md](./03-TECHNICAL_ARCHITECTURE.md) - 기술 아키텍처 문서
+- [07-NAVIGATION_SYSTEM.md](./07-NAVIGATION_SYSTEM.md) - ⭐ **NEW** 네비게이션 시스템 구현 가이드
 
 ## 💻 구현 가이드
 - [04-API_INTEGRATION.md](./04-API_INTEGRATION.md) - API 연동 가이드
@@ -20,10 +21,11 @@
 - [RENDER_DEPLOY_GUIDE.md](./RENDER_DEPLOY_GUIDE.md) - Render.com 배포 가이드
 - [push-to-github.md](./push-to-github.md) - GitHub 푸시 가이드
 
-## 📊 프로젝트 통계
-- **총 문서**: 11개
-- **총 코드 파일**: 15개+ (TypeScript/JavaScript)
-- **컴포넌트**: 8개
+## 📊 프로젝트 통계 (2025-08-19 업데이트)
+- **총 문서**: 12개 (+1)
+- **총 코드 파일**: 24개+ (TypeScript/JavaScript) (+9)
+- **컴포넌트**: 10개 (+2)
+- **페이지**: 5개 (신규)
 - **API 엔드포인트**: 10개+
 - **배포 플랫폼**: 3개 (GitHub Pages, Render, Netlify)
 
@@ -34,5 +36,6 @@
 
 ## 📅 최종 업데이트
 - **날짜**: 2025년 8월 19일
-- **버전**: 1.0.0
+- **버전**: 2.0.0 (네비게이션 시스템 추가)
 - **작성자**: Claude Code Assistant
+- **최신 기능**: 다중 페이지 네비게이션 시스템
