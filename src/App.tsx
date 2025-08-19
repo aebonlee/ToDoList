@@ -5,9 +5,14 @@ import { LoginForm } from './components/LoginForm';
 import { RegisterForm } from './components/RegisterForm';
 import { TodoList } from './components/TodoList';
 import { HealthCheck } from './components/HealthCheck';
+import ThemeProvider from './contexts/ThemeProvider';
+import { useTheme } from './contexts/ThemeContext';
+import PalettePicker from './components/PalettePicker';
+import ThemeToggle from './components/ThemeToggle';
 import './App.css';
 
-function App() {
+function AppContent() {
+  const { mode } = useTheme();
   const [isLoginMode, setIsLoginMode] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverHealthy, setServerHealthy] = useState<boolean>(true);
@@ -62,10 +67,10 @@ function App() {
   // Show loading spinner during initial auth check
   if (authLoading && !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-app">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">로딩 중...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+          <p className="text-app">로딩 중...</p>
         </div>
       </div>
     );
@@ -74,8 +79,14 @@ function App() {
   // Show auth forms if not authenticated
   if (!isAuthenticated) {
     return (
-      <div>
-        <div className="max-w-md mx-auto mt-8 px-4">
+      <div className="min-h-screen bg-app">
+        {/* Theme Controls for Login Page */}
+        <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+          <PalettePicker />
+          <ThemeToggle />
+        </div>
+        
+        <div className="max-w-md mx-auto pt-8 px-4">
           <HealthCheck onStatusChange={setServerHealthy} />
         </div>
         {isLoginMode ? (
@@ -99,31 +110,45 @@ function App() {
 
   // Main app for authenticated users
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+    <div className="min-h-screen bg-app">
+      {/* Enhanced Header */}
+      <header className="bg-card shadow-lg border-b border-app sticky top-0 z-40 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-xl font-semibold text-gray-900">TODO 앱</h1>
-              {user && (
-                <p className="text-sm text-gray-600">
-                  안녕하세요, {user.name || user.email}님!
-                </p>
-              )}
+            <div className="flex items-center gap-4">
+              <div>
+                <h1 className="text-2xl font-bold text-app flex items-center gap-2">
+                  📝 TODO 앱
+                  <span className="text-sm bg-accent text-white px-2 py-1 rounded-full font-medium">
+                    {mode}
+                  </span>
+                </h1>
+                {user && (
+                  <p className="text-sm text-muted mt-1">
+                    안녕하세요, <span className="font-medium text-accent">{user.name || user.email}</span>님! 🎉
+                  </p>
+                )}
+              </div>
             </div>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-            >
-              로그아웃
-            </button>
+            
+            {/* Theme Controls & Logout */}
+            <div className="flex items-center gap-3">
+              <PalettePicker />
+              <ThemeToggle />
+              <div className="w-px h-8 bg-border"></div>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-sm text-danger hover:bg-danger-weak border border-app rounded-lg transition-all duration-200 font-medium hover:scale-105 shadow-sm"
+              >
+                🚪 로그아웃
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="py-8">
+      <main>
         <TodoList
           todos={todos}
           loading={todosLoading}
@@ -135,6 +160,15 @@ function App() {
         />
       </main>
     </div>
+  );
+}
+
+// Main App with Theme Provider
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

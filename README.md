@@ -1,28 +1,54 @@
-# 🚀 Modern TODO Application
+# 🎨 Enhanced TodoList - 모던 할일 관리 애플리케이션
 
-React + TypeScript + Tailwind CSS + Node.js로 구축된 풀스택 TODO 관리 애플리케이션입니다.
+<div align="center">
 
-## 🌟 주요 기능
+![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-16--20-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
-### 📝 TODO 관리
-- **할 일 추가**: 제목과 설명을 포함한 새로운 할 일 생성
-- **상태 관리**: 체크박스로 완료/미완료 토글
-- **편집 기능**: 인라인 편집으로 할 일 수정 (더블클릭)
-- **삭제 기능**: 불필요한 할 일 제거
-- **필터링**: 전체/진행중/완료 상태별 필터링
+**🌟 다크모드 + 5가지 테마 + 모던 애니메이션을 지원하는 차세대 TodoList**
 
-### 🔐 사용자 인증
+[✨ 라이브 데모](https://aebonlee.github.io/ToDoList) • [📚 문서](./docs/) • [🚀 시작하기](#-시작하기)
+
+</div>
+
+---
+
+React + TypeScript + Tailwind CSS + Node.js로 구축된 **완전히 새로워진** 풀스택 TODO 관리 애플리케이션입니다.
+
+## 🎯 주요 특징
+
+### 🎨 **고급 테마 시스템**
+- 🌙 **다크/라이트 모드** 지원
+- 🌈 **5가지 컬러 팔레트** (Blue, Green, Purple, Pink, Orange)
+- 💾 **설정 영구 저장** (LocalStorage)
+- 🔄 **실시간 테마 전환**
+
+### ✨ **모던 UI/UX**
+- 🎭 **마이크로 애니메이션** (hover, click, transition)
+- 📱 **완전 반응형** 디자인
+- 🎯 **직관적 이모지** 아이콘
+- 💫 **부드러운 전환** 효과
+
+### 🚀 **향상된 기능**
+- ⚡ **실시간 필터링** (전체/진행중/완료)
+- 📊 **스마트 통계** 표시
+- ✏️ **인라인 편집** 지원
+- 🗑️ **일괄 삭제** 기능
+
+### 📝 **TODO 관리**
+- **할 일 추가**: 향상된 입력 시스템 + Enter 키 지원
+- **상태 관리**: 애니메이션 체크박스로 완료/미완료 토글
+- **편집 기능**: 클릭 한번으로 인라인 편집
+- **삭제 기능**: 안전한 확인 팝업으로 삭제
+- **필터링**: 아름다운 탭 인터페이스
+
+### 🔐 **사용자 인증**
 - **회원가입**: 이메일 기반 새 계정 생성
 - **로그인**: JWT 토큰 기반 인증
 - **자동 로그인**: 토큰 자동 저장 및 복원
 - **사용자별 데이터**: 개인 TODO 목록 관리
-
-### 🎨 UI/UX
-- **반응형 디자인**: 모바일/태블릿/데스크톱 완벽 대응
-- **모던 인터페이스**: Tailwind CSS 기반 깔끔한 디자인
-- **아이콘**: Heroicons으로 직관적 UI
-- **실시간 피드백**: 로딩 상태, 에러 메시지
-- **접근성**: ARIA 속성, 키보드 네비게이션
 
 ## 🛠 기술 스택
 

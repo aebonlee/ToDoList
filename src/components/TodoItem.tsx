@@ -45,34 +45,35 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   };
 
   return (
-    <div className={`border rounded-lg p-4 shadow-sm transition-all duration-200 ${
+    <li className={`slide-in border border-app rounded-xl p-4 shadow-sm transition-all duration-200 hover:shadow-md ${
       todo.completed 
-        ? 'bg-gray-50 border-gray-200' 
-        : 'bg-white border-gray-300 hover:border-blue-300'
+        ? 'bg-card opacity-70' 
+        : 'bg-card hover:scale-[1.01]'
     }`}>
       <div className="flex items-start gap-3">
         {/* Checkbox */}
         <button
           onClick={() => onToggle(todo.id)}
-          className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+          className={`flex-shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-200 hover:scale-110 ${
             todo.completed
-              ? 'bg-blue-500 border-blue-500 text-white'
-              : 'border-gray-300 hover:border-blue-400'
+              ? 'bg-accent border-accent text-white shadow-md'
+              : 'border-app hover:border-accent hover:bg-accent-weak'
           }`}
+          aria-label={todo.completed ? '완료 취소' : '완료 처리'}
         >
-          {todo.completed && <CheckIcon className="w-3 h-3" />}
+          {todo.completed && <CheckIcon className="w-4 h-4" />}
         </button>
 
         {/* Content */}
         <div className="flex-grow min-w-0">
           {isEditing ? (
-            <div className="space-y-2">
+            <div className="space-y-3">
               <input
                 type="text"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
                 onKeyDown={handleKeyPress}
-                className="w-full px-2 py-1 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-app rounded-lg bg-card text-app focus:border-transparent focus:ring-4 ring-accent transition-all duration-200"
                 placeholder="할 일 제목"
                 autoFocus
               />
@@ -80,28 +81,35 @@ export const TodoItem: React.FC<TodoItemProps> = ({
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
                 onKeyDown={handleKeyPress}
-                className="w-full px-2 py-1 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                className="w-full px-3 py-2 border border-app rounded-lg bg-card text-app focus:border-transparent focus:ring-4 ring-accent resize-none transition-all duration-200"
                 placeholder="설명 (선택사항)"
                 rows={2}
               />
             </div>
           ) : (
             <div>
-              <h3 className={`font-medium text-gray-900 ${
-                todo.completed ? 'line-through text-gray-500' : ''
+              <h3 className={`font-semibold text-app transition-all duration-200 ${
+                todo.completed ? 'line-through text-muted' : ''
               }`}>
                 {todo.title}
               </h3>
               {todo.description && (
-                <p className={`text-sm text-gray-600 mt-1 ${
-                  todo.completed ? 'line-through text-gray-400' : ''
+                <p className={`text-sm text-muted mt-1 transition-all duration-200 ${
+                  todo.completed ? 'line-through opacity-60' : ''
                 }`}>
                   {todo.description}
                 </p>
               )}
-              <p className="text-xs text-gray-400 mt-2">
-                {new Date(todo.createdAt).toLocaleDateString('ko-KR')}
-              </p>
+              <div className="flex items-center gap-2 mt-3">
+                <span className="text-xs text-muted bg-accent-weak px-2 py-1 rounded-full">
+                  📅 {new Date(todo.createdAt).toLocaleDateString('ko-KR')}
+                </span>
+                {todo.completed && (
+                  <span className="text-xs text-success bg-success-weak px-2 py-1 rounded-full">
+                    ✅ 완료됨
+                  </span>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -112,15 +120,17 @@ export const TodoItem: React.FC<TodoItemProps> = ({
             <>
               <button
                 onClick={handleSave}
-                className="p-1 text-green-600 hover:text-green-700 hover:bg-green-50 rounded"
+                className="p-2 text-success hover:bg-success-weak rounded-lg transition-all duration-200 hover:scale-110 shadow-sm"
                 title="저장"
+                aria-label="변경사항 저장"
               >
                 <CheckIcon className="w-4 h-4" />
               </button>
               <button
                 onClick={handleCancel}
-                className="p-1 text-gray-600 hover:text-gray-700 hover:bg-gray-50 rounded"
+                className="p-2 text-muted hover:bg-accent-weak rounded-lg transition-all duration-200 hover:scale-110 shadow-sm"
                 title="취소"
+                aria-label="편집 취소"
               >
                 <XMarkIcon className="w-4 h-4" />
               </button>
@@ -129,15 +139,21 @@ export const TodoItem: React.FC<TodoItemProps> = ({
             <>
               <button
                 onClick={() => setIsEditing(true)}
-                className="p-1 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded"
+                className="p-2 text-accent hover:bg-accent-weak rounded-lg transition-all duration-200 hover:scale-110 shadow-sm"
                 title="편집"
+                aria-label="할일 편집"
               >
                 <PencilIcon className="w-4 h-4" />
               </button>
               <button
-                onClick={() => onDelete(todo.id)}
-                className="p-1 text-red-600 hover:text-red-700 hover:bg-red-50 rounded"
+                onClick={() => {
+                  if (window.confirm('정말로 삭제하시겠습니까?')) {
+                    onDelete(todo.id);
+                  }
+                }}
+                className="p-2 text-danger hover:bg-danger-weak rounded-lg transition-all duration-200 hover:scale-110 shadow-sm"
                 title="삭제"
+                aria-label="할일 삭제"
               >
                 <TrashIcon className="w-4 h-4" />
               </button>
@@ -145,6 +161,6 @@ export const TodoItem: React.FC<TodoItemProps> = ({
           )}
         </div>
       </div>
-    </div>
+    </li>
   );
 };
