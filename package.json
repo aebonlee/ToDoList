@@ -28,6 +28,7 @@
     "eject": "react-scripts eject",
     "serve": "serve -s build",
     "build:prod": "REACT_APP_API_URL=https://to-do-list-pog8.onrender.com npm run build",
+    "build:render": "npm ci && npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

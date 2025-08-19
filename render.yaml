@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: todo-app-frontend
+    name: todolist-dhlt
     env: static
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
