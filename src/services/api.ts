@@ -11,7 +11,7 @@ import {
 
 class ApiService {
   private api: AxiosInstance;
-  private baseURL = process.env.REACT_APP_API_URL || 'https://to-do-list-pog8.onrender.com';
+  private baseURL = process.env.REACT_APP_API_URL || 'https://todolist-dhlt-gc0d.onrender.com';
 
   constructor() {
     this.api = axios.create({

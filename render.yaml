@@ -15,6 +15,6 @@ services:
         destination: /index.html
     envVars:
       - key: REACT_APP_API_URL
-        value: https://to-do-list-pog8.onrender.com
+        value: https://todolist-dhlt-gc0d.onrender.com
       - key: NODE_ENV
         value: production

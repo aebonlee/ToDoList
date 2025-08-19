@@ -31,7 +31,7 @@ Publish Directory: build
 ### 5단계: 환경 변수 설정
 | Key | Value |
 |-----|-------|
-| REACT_APP_API_URL | https://to-do-list-pog8.onrender.com |
+| REACT_APP_API_URL | https://todolist-dhlt-gc0d.onrender.com |
 | NODE_ENV | production |
 
 ### 6단계: 배포
@@ -61,7 +61,7 @@ services:
         destination: /index.html
     envVars:
       - key: REACT_APP_API_URL
-        value: https://to-do-list-pog8.onrender.com
+        value: https://todolist-dhlt-gc0d.onrender.com
       - key: NODE_ENV
         value: production
 ```
