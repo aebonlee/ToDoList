@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: 🚀 Complete CI/CD Pipeline
 
 on:
   push:
@@ -67,17 +67,56 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
 
+  commit-info:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+        
+    - name: Display Commit Information
+      run: |
+        echo "📋 COMMIT INFORMATION"
+        echo "===================="
+        echo "🔧 Commit SHA: ${{ github.sha }}"
+        echo "📝 Message: ${{ github.event.head_commit.message }}"
+        echo "👤 Author: ${{ github.event.head_commit.author.name }}"
+        echo "📧 Email: ${{ github.event.head_commit.author.email }}"
+        echo "🕒 Timestamp: ${{ github.event.head_commit.timestamp }}"
+        echo "🌿 Branch: ${{ github.ref_name }}"
+        echo "📁 Repository: ${{ github.repository }}"
+
+  render-deploy-info:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Render Deployment Info
+      run: |
+        echo "🌐 Render Deployment Information"
+        echo "================================"
+        echo "🎯 Frontend URL: https://todolist-dhlt.onrender.com"
+        echo "🔧 Backend URL: https://todolist-dhlt-gc0d.onrender.com"
+        echo "📝 Commit: ${{ github.event.head_commit.message }}"
+        echo "👤 Author: ${{ github.event.head_commit.author.name }}"
+
   notify-deployment:
-    needs: [build-and-test, deploy-github-pages]
+    needs: [build-and-test, deploy-github-pages, commit-info, render-deploy-info]
     runs-on: ubuntu-latest
     if: always()
     
     steps:
-    - name: Deployment notification
+    - name: Final Deployment Summary
       run: |
-        echo "🚀 Deployment Status:"
+        echo "🚀 DEPLOYMENT SUMMARY"
+        echo "===================="
         echo "✅ Build and Test: ${{ needs.build-and-test.result }}"
         echo "📦 GitHub Pages: ${{ needs.deploy-github-pages.result }}"
-        echo "📝 Commit: ${{ github.event.head_commit.message }}"
-        echo "👤 Author: ${{ github.event.head_commit.author.name }}"
-        echo "🔗 Live URL: https://aebonlee.github.io/ToDoList"
+        echo "📋 Commit Info: ${{ needs.commit-info.result }}"
+        echo "🌐 Render Info: ${{ needs.render-deploy-info.result }}"
+        echo ""
+        echo "🔗 Live URLs:"
+        echo "• GitHub Pages: https://aebonlee.github.io/ToDoList"
+        echo "• Render Frontend: https://todolist-dhlt.onrender.com"
