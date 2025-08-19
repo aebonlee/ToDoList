@@ -52,7 +52,6 @@ const mockProjects: Project[] = [
 
 export default function Projects() {
   const [projects] = useState<Project[]>(mockProjects);
-  const [showCreateForm, setShowCreateForm] = useState(false);
 
   const getProgressPercentage = (completed: number, total: number) => {
     return total > 0 ? Math.round((completed / total) * 100) : 0;
@@ -76,7 +75,7 @@ export default function Projects() {
           </p>
         </div>
         <button
-          onClick={() => setShowCreateForm(true)}
+          onClick={() => {/* TODO: Implement create form */}}
           className="inline-flex items-center px-4 py-2 bg-accent text-white rounded-lg hover:opacity-90 transition-all duration-200 shadow-sm hover:scale-105"
         >
           <PlusIcon className="w-5 h-5 mr-2" />
@@ -162,7 +161,7 @@ export default function Projects() {
 
         {/* Create New Project Card */}
         <div
-          onClick={() => setShowCreateForm(true)}
+          onClick={() => {/* TODO: Implement create form */}}
           className="bg-card rounded-xl border-2 border-dashed border-accent opacity-60 hover:opacity-100 transition-all duration-200 cursor-pointer hover:scale-[1.02] flex items-center justify-center min-h-[300px]"
         >
           <div className="text-center">

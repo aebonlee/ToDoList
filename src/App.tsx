@@ -8,7 +8,6 @@ import { HealthCheck } from './components/HealthCheck';
 import DemoModeToggle from './components/DemoModeToggle';
 import Navigation from './components/Navigation';
 import ThemeProvider from './contexts/ThemeProvider';
-import { useTheme } from './contexts/ThemeContext';
 import PalettePicker from './components/PalettePicker';
 import ThemeToggle from './components/ThemeToggle';
 import Dashboard from './pages/Dashboard';
@@ -30,8 +29,7 @@ function AppContent() {
     error: authError, 
     isAuthenticated, 
     login, 
-    register, 
-    logout,
+    register,
     clearError 
   } = useAuth();
 

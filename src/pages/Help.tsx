@@ -260,18 +260,18 @@ export default function Help() {
           <div className="bg-card rounded-xl border border-app shadow-sm p-6">
             <h3 className="text-lg font-semibold text-app mb-4">🔗 유용한 링크</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-accent hover:underline text-sm">
+              <button className="block text-accent hover:underline text-sm text-left">
                 📖 사용자 매뉴얼
-              </a>
-              <a href="#" className="block text-accent hover:underline text-sm">
+              </button>
+              <button className="block text-accent hover:underline text-sm text-left">
                 🎥 튜토리얼 영상
-              </a>
-              <a href="#" className="block text-accent hover:underline text-sm">
+              </button>
+              <button className="block text-accent hover:underline text-sm text-left">
                 🐛 버그 신고
-              </a>
-              <a href="#" className="block text-accent hover:underline text-sm">
+              </button>
+              <button className="block text-accent hover:underline text-sm text-left">
                 💡 기능 제안
-              </a>
+              </button>
               <a href="https://github.com/aebonlee/ToDoList" className="block text-accent hover:underline text-sm">
                 📦 GitHub 저장소
               </a>
