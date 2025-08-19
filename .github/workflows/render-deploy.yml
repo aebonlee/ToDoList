@@ -27,7 +27,7 @@ jobs:
         echo ""
         echo "📋 Manual Setup Required for Render:"
         echo "1. Delete existing service and create new Static Site"
-        echo "2. Build Command: npm ci --legacy-peer-deps && PUBLIC_URL=/ npm run build"
+        echo "2. Build Command: npm install && PUBLIC_URL=/ npm run build"
         echo "3. Publish Directory: build"
         echo "4. Environment Variables:"
         echo "   - REACT_APP_API_URL=https://todolist-dhlt-gc0d.onrender.com"
@@ -43,6 +43,6 @@ jobs:
     - name: Test build process
       run: |
         echo "🧪 Testing build process locally..."
-        npm ci --legacy-peer-deps
+        npm install
         PUBLIC_URL=/ npm run build
         echo "✅ Build test completed successfully"

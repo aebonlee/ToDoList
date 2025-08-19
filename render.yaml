@@ -2,7 +2,7 @@ services:
   - type: web
     name: todolist-dhlt
     env: static
-    buildCommand: npm ci --legacy-peer-deps && PUBLIC_URL=/ npm run build
+    buildCommand: npm install && PUBLIC_URL=/ npm run build
     staticPublishPath: ./build
     pullRequestPreviewsEnabled: true
     routes:
