@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: todo-app-frontend
+    env: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://to-do-list-pog8.onrender.com
+      - key: NODE_ENV
+        value: production
