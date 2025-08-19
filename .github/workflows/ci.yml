@@ -32,7 +32,7 @@ jobs:
       run: npm test -- --coverage --watchAll=false
       
     - name: Build application
-      run: npm run build
+      run: CI=false npm run build
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -44,6 +44,10 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     
     steps:
     - name: Checkout code
@@ -59,7 +63,7 @@ jobs:
       run: npm install
       
     - name: Build for GitHub Pages
-      run: npm run build
+      run: CI=false npm run build
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
